@@ -1,7 +1,7 @@
 import torch
 from torch.utils.data import DataLoader
-from data_loader import test_image_datasets
-from model import get_available_device, BrainTumorClassifier
+from data_loader import image_dataset
+from model import get_available_device, SkinIllnessClassifier
 import numpy as np
 from tqdm import tqdm
 
@@ -10,7 +10,7 @@ torch.multiprocessing.set_sharing_strategy('file_system')
 device = get_available_device()
 
 def give_predict(model_path, data, save_to_file=False) -> float:
-    tmp_model = BrainTumorClassifier()
+    tmp_model = SkinIllnessClassifier()
     tmp_model.load_state_dict(torch.load(model_path, weights_only=True))
     tmp_model.eval()
     
@@ -42,7 +42,7 @@ if __name__ == "__main__":
     batch_size = 32
     num_workers = 4
 
-    data_loaders = {x: DataLoader(test_image_datasets[x], shuffle=True, batch_size=batch_size, num_workers=4)
+    data_loaders = {x: DataLoader(image_dataset[x], shuffle=True, batch_size=batch_size, num_workers=4)
         for x in ['train', 'test']
     }
 

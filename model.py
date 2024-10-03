@@ -3,9 +3,9 @@ import torch.nn as nn
 import torch.optim as optim
 from tqdm import tqdm
 
-class BrainTumorClassifier(nn.Module):
+class SkinIllnessClassifier(nn.Module):
     def __init__(self):
-        super(BrainTumorClassifier, self).__init__()
+        super(SkinIllnessClassifier, self).__init__()
 
         self.transformer = torch.hub.load('facebookresearch/dinov2', 'dinov2_vits14')
         self.classifier = nn.Sequential(
@@ -34,7 +34,7 @@ def train(data_loaders, iters=10, learning_rate=0.000001, wsp="model_eval/classi
     device = get_available_device()
     print(f"Using: {device}")
 
-    model = BrainTumorClassifier()
+    model = SkinIllnessClassifier()
     model.to(device)
 
     criterion = nn.CrossEntropyLoss()
