@@ -16,7 +16,7 @@ def give_predict(model_path, data, save_to_file=False) -> float:
     
     tmp_model.to(device)
     print(f"using: {device}")
-    loop = tqdm(data['test'])
+    loop = tqdm(data['train'])
     
     omg_predict = []
     omg_truth = []
