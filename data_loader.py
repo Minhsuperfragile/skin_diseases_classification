@@ -1,6 +1,7 @@
 from torchvision import datasets, transforms
 
-data_set_path = "/mnt/g/Code/Dataset/skin_illness"
+train_set_path = "/mnt/g/Code/Dataset/skin_illness"
+test_set_path = "/mnt/g/Code/Dataset/skin_illness_test"
 
 data_transforms = {
     'train': transforms.Compose([
@@ -18,11 +19,6 @@ data_transforms = {
 }
 
 image_dataset = {
-    x: datasets.ImageFolder(data_set_path, data_transforms[x])
-    for x in ['train', 'test']
+    "train": datasets.ImageFolder(train_set_path, data_transforms['train']),
+    "test" : datasets.ImageFolder(test_set_path, data_transforms["test"])
 }
-
-if __name__ == "__main__":
-    from os.path import exists
-    print(exists(data_set_path))
-    print(image_dataset)

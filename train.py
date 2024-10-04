@@ -10,7 +10,7 @@ data_loaders = {x: DataLoader(image_dataset[x], shuffle=True, batch_size=batch_s
     for x in ['train', 'test']
 }
 
-epoch_loss = md.train(data_loaders, iters=5)
+epoch_loss = md.train(data_loaders, iters=50)
 
 with open(r"model_eval/overall_loss.json", "w") as f:
     json.dump(epoch_loss, f)
